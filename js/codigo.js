@@ -13,11 +13,39 @@
 
 
 let valor = prompt("Tu nombre:");
-let ins = document.getElementById('kk');
+const ins = document.getElementById('kk');
+let saludo = document.getElementById("saludo");
+let texto = document.getElementById("texto");
+let exit = document.getElementById("uwu");
+let con = document.querySelector(".con__modal");
+
+ins.addEventListener("click",saludar)
+exit.addEventListener("click",quit)
+
+function saludar(){
+		let modal = document.querySelector(".modal");
+		let body = document.querySelector(".body");
+		con.style.animation = "aparecer 1s forwards";
+		con.style.display = "flex";
+		return true
+//		body.style.overflow = "hidden";
+	}
+
+function quit(){
+	con.style.display = "none"
+}
 
 
-if (valor == "" || valor == null) ins.innerHTML += "BIENVENIDOS!";
-else ins.innerHTML += `BIENVENIDO <span>${valor}</span>.`;
+if (valor == "" || valor == null || !isNaN(valor)){
+	ins.innerHTML += "BIENVENIDOS!";
+	saludo.innerHTML = `Hola <i>Desconocido.</i> :) <br>`;
+	texto.innerHTML = `:v si eres curioso mano XDD`;
+
+}else{
+	ins.innerHTML += `BIENVENIDO <span>${valor}</span>.`;
+	saludo.innerHTML = `Hola <span>${valor}</span>. :) <br>`;
+	texto.innerHTML = `:v si eres curioso mano XDD`;
+}
 
 //switch (valor){
 //	case "":ins.innerHTML += "BIENVENIDOS!"; 
@@ -45,14 +73,14 @@ let array = [
 	{nombre:"Piratas Del Caribe: En Aguas Misteriosas",src:"pdc4.jpg",multi:"",},
 	{nombre:"Piratas Del Caribe: La Venganza De Salazar",src:"pdc5.jpg",multi:""},
 	{nombre:"Michael Jackson: Searching For Neverlad",src:"sfn.jpg",multi:""},
-	{nombre:"Your Name",src:"yn.jpg",multi:""}
+	{nombre:"Your Name",src:"yn.jpg",multi:""},
 ]
 
-let hola = document.getElementById("box");
-let div;
+const hola = document.getElementById("box");
+let div = "";
 
 for (var i = 0; i < array.length; i++) {
-	div = `<div class="flex">
+	div += `<div class="flex">
 				<a href="vid/${array[i]["multi"]}">
 					<div>
 						<img src="img/${array[i]["src"]}" alt="">
@@ -60,9 +88,11 @@ for (var i = 0; i < array.length; i++) {
 					<h4>${array[i]["nombre"]}</h4>
 				</a>
 			</div>`;
-	hola.innerHTML += div;
 }
- 
+
+hola.innerHTML = div;
+
+
 console.log(i)
 
 let nombre = "pedro"; 
